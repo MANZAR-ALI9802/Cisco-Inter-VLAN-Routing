@@ -1,0 +1,22 @@
+enable
+configure terminal
+hostname Router0
+
+interface fastEthernet 0/0
+ no shutdown
+ exit
+
+interface fastEthernet 0/0.10
+ description STAFF VLAN 10 gateway
+ encapsulation dot1Q 10
+ ip address 10.1.1.254 255.255.255.0
+ exit
+
+interface fastEthernet 0/0.20
+ description STUDENT VLAN 20 gateway
+ encapsulation dot1Q 20
+ ip address 20.1.1.254 255.255.255.0
+ exit
+
+end
+write memory

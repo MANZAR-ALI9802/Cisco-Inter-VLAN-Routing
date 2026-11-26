@@ -1,0 +1,28 @@
+enable
+configure terminal
+hostname Switch3
+
+vlan 10
+ name STAFF
+vlan 20
+ name STUDENT
+ exit
+
+interface range fastEthernet 0/1-10
+ switchport mode access
+ switchport access vlan 10
+ exit
+
+interface range fastEthernet 0/11-20
+ switchport mode access
+ switchport access vlan 20
+ exit
+
+! Trunk toward Router0 (change Fa0/24 to the port you actually used)
+interface fastEthernet 0/24
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ exit
+
+end
+write memory
